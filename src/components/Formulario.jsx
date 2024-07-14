@@ -4,10 +4,21 @@ const Formulario = ({ agregarNota }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [importante, setImportante] = useState(false);
+  const [errores, setErrores] = useState({});
+
+  const validarFormulario = () => {
+    const nuevosErrores = {};
+    if (!titulo.trim()) nuevosErrores.titulo = 'El título es obligatorio.';
+    if (!descripcion.trim()) nuevosErrores.descripcion = 'La descripción es obligatoria.';
+    return nuevosErrores;
+  };
 
   const manejarEnvio = (e) => {
     e.preventDefault();
-    if (descripcion.trim()) {
+    const nuevosErrores = validarFormulario();
+    if (Object.keys(nuevosErrores).length > 0) {
+      setErrores(nuevosErrores);
+    } else {
       agregarNota({
         titulo,
         descripcion,
@@ -16,8 +27,7 @@ const Formulario = ({ agregarNota }) => {
       setTitulo('');
       setDescripcion('');
       setImportante(false);
-    } else {
-      alert('La descripción es obligatoria');
+      setErrores({});
     }
   };
 
@@ -29,12 +39,14 @@ const Formulario = ({ agregarNota }) => {
         value={titulo}
         onChange={(e) => setTitulo(e.target.value)}
       />
+      {errores.titulo && <p style={{ color: 'red' }}>{errores.titulo}</p>}
       <textarea
         placeholder="Descripción"
         value={descripcion}
         onChange={(e) => setDescripcion(e.target.value)}
         required
       />
+      {errores.descripcion && <p style={{ color: 'red' }}>{errores.descripcion}</p>}
       <label>
         Importante
         <input
