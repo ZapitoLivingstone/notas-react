@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Nota = ({ titulo, descripcion, importante }) => {
+const Nota = ({ nota }) => {
   return (
-    <div className={`nota ${importante ? 'importante' : ''}`}>
-      <h2>{titulo}</h2>
-      <p>{descripcion}</p>
+    <div className={`nota ${nota.importante ? 'importante' : ''}`}>
+      <h2>{nota.titulo}</h2>
+      <p>{nota.descripcion}</p>
     </div>
   );
 };

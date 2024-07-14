@@ -5,7 +5,6 @@ body {
   color: #fff; 
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
 }
 
@@ -80,6 +79,7 @@ button:hover {
   position: relative;
   color: #333; 
   font-family: 'Arial', sans-serif;
+  border-radius: 5px;
 }
 
 .nota h2 {
@@ -123,3 +123,9 @@ button:hover {
     width: calc(100% - 40px);
   }
 }
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+

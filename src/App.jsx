@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Formulario from './components/Formulario';
 import ListaNotas from './components/ListaNotas';
-
+import './index.css';
 
 const App = () => {
   const [notas, setNotas] = useState([]);
