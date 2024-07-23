@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Modal = ({ show, onClose, onConfirm }) => {
-  if (!show) {
-    return null;
-  }
+const ModalEliminar = ({ isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
@@ -17,4 +15,4 @@ const Modal = ({ show, onClose, onConfirm }) => {
   );
 };
 
-export default Modal;
+export default ModalEliminar;
